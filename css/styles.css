@@ -2,3 +2,18 @@ html,
 body {
   height: 100%;
 }
+.answers {
+  margin-bottom: 15px;
+}
+.answers label {
+  display: block;
+}
+.question {
+  font-weight: 600;
+}
+img {
+  margin-bottom: 20px;
+}
+#results {
+  margin-bottom: 20px;
+}
