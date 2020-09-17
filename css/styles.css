@@ -18,8 +18,12 @@ img {
   margin-bottom: 20px;
 }
 button {
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 h3 {
   margin-bottom: 30px;
+}
+#sticky-footer {
+  background-color: #3d449a;
+  color: #ffffff;
 }
