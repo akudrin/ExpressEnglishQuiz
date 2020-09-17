@@ -62,7 +62,7 @@
     });
 
     // show number of correct answers out of total
-    resultsContainer.innerHTML = `Answers correct ${numCorrect} out of ${myQuestions.length}`;
+    resultsContainer.innerHTML = `Answers correct: ${numCorrect} out of ${myQuestions.length}`;
   }
 
   //variables
