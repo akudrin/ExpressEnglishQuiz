@@ -39,6 +39,14 @@
     // keep track of user's answers
     let numCorrect = 0;
 
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      answerContainers[questionNumber]
+        .querySelectorAll("label")
+        .forEach((label) => {
+          label.style.color = "black";
+        });
+    });
+
     // for each question...
     myQuestions.forEach((currentQuestion, questionNumber) => {
       // find selected answer
@@ -50,14 +58,28 @@
       if (userAnswer === currentQuestion.correctAnswer) {
         // add to the number of correct answers
         numCorrect++;
-
-        // color the answers green
-        answerContainers[questionNumber].style.color = "green";
+        // color the correct answer green
+        answerContainers[questionNumber]
+          .querySelectorAll("label")
+          .forEach((label) => {
+            if (label.querySelector("input").value === userAnswer) {
+              label.style.color = "green";
+            }
+          });
       }
-      // if answer is wrong or blank
+      // if answer is blank
+      else if (userAnswer == undefined) {
+        answerContainers[questionNumber].style.color = "black";
+      }
+      // if answer is wrong
       else {
-        // color the answers red
-        answerContainers[questionNumber].style.color = "red";
+        answerContainers[questionNumber]
+          .querySelectorAll("label")
+          .forEach((label) => {
+            if (label.querySelector("input").value === userAnswer) {
+              label.style.color = "red";
+            }
+          });
       }
     });
 
@@ -101,7 +123,7 @@
       correctAnswer: "c",
     },
     {
-      question: "They .... live in Tallinn.",
+      question: "They .... in Tallinn.",
       answers: {
         a: "lives",
         b: "is living",
