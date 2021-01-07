@@ -87,10 +87,30 @@
     resultsContainer.innerHTML = `Answers correct: ${numCorrect} out of ${myQuestions.length}`;
   }
 
+  function showAllAnswers() {
+    // gather answer containers from our quiz
+    const answerContainers = quizContainer.querySelectorAll(".answers");
+
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      //
+      answerContainers[questionNumber]
+        .querySelectorAll("label")
+        .forEach((label) => {
+          if (
+            label.querySelector("input").value === currentQuestion.correctAnswer
+          ) {
+            label.querySelector("input").checked = "true";
+            label.style.color = "green";
+          }
+        });
+    });
+  }
+
   //variables
   const quizContainer = document.getElementById("quiz");
   const resultsContainer = document.getElementById("results");
-  const submitButton = document.getElementById("submit");
+  const submitQuizButton = document.getElementById("submitQuiz");
+  const showAnswers = document.getElementById("showAnswers");
   const myQuestions = [
     {
       question: "Jim .... every day.",
@@ -148,5 +168,6 @@
   buildQuiz();
 
   // on submit, show results
-  submitButton.addEventListener("click", showResults);
+  submitQuizButton.addEventListener("click", showResults);
+  showAnswers.addEventListener("click", showAllAnswers);
 })();
