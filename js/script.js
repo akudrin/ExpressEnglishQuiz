@@ -35,6 +35,15 @@
   function showResults() {
     // gather answer containers from our quiz
     const answerContainers = quizContainer.querySelectorAll(".answers");
+    //remove explanation <p></p> element
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      console.log(answerContainers[questionNumber]);
+      let pElement = answerContainers[questionNumber].querySelector("p");
+      if (pElement != null) {
+        console.log(pElement);
+        pElement.remove();
+      }
+    });
 
     // keep track of user's answers
     let numCorrect = 0;
@@ -88,11 +97,27 @@
   }
 
   function showAllAnswers() {
+    resultsContainer.innerHTML = "";
     // gather answer containers from our quiz
     const answerContainers = quizContainer.querySelectorAll(".answers");
+    //remove explanation <p></p> element
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      console.log(answerContainers[questionNumber]);
+      let pElement = answerContainers[questionNumber].querySelector("p");
+      if (pElement != null) {
+        console.log(pElement);
+        pElement.remove();
+      }
+
+      answerContainers[questionNumber]
+        .querySelectorAll("label")
+        .forEach((label) => {
+          label.querySelector("input").checked = "false";
+          label.style.color = "black";
+        });
+    });
 
     myQuestions.forEach((currentQuestion, questionNumber) => {
-      //
       answerContainers[questionNumber]
         .querySelectorAll("label")
         .forEach((label) => {
@@ -103,6 +128,14 @@
             label.style.color = "green";
           }
         });
+
+      let element = document.createElement("p");
+      //element = element.appendChild(document.createElement("strong"));
+      element.appendChild(
+        document.createTextNode("Note: " + currentQuestion.hint)
+      );
+      element.style.color = "orange";
+      answerContainers[questionNumber].appendChild(element);
     });
   }
 
@@ -121,6 +154,7 @@
         d: "don't go to school",
       },
       correctAnswer: "c",
+      hint: "Hint text goes here.",
     },
     {
       question: "Anna .... at the moment.",
@@ -131,6 +165,7 @@
         d: "has read a book",
       },
       correctAnswer: "c",
+      hint: "Hint text goes here",
     },
     {
       question: "Mary .... already.",
@@ -141,6 +176,7 @@
         d: "drive to the city",
       },
       correctAnswer: "c",
+      hint: "Hint text goes here",
     },
     {
       question: "They .... in Tallinn.",
@@ -151,6 +187,7 @@
         d: "doesn't live",
       },
       correctAnswer: "c",
+      hint: "Hint text goes here",
     },
     {
       question: "We feel tired because we .... all day.",
@@ -161,6 +198,7 @@
         d: "are walking",
       },
       correctAnswer: "c",
+      hint: "Hint text goes here",
     },
   ];
 

@@ -29,3 +29,7 @@ h3 {
   background-color: #3d449a;
   color: #ffffff;
 }
+p {
+  width: 270px;
+  word-break: break-all;
+}
